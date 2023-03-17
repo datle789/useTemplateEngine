@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>{{ title }}</h1>
+<p>Welcome to my website!</p>
+<a href="./index.php?action=add">add user</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">edit</th>
+            <th scope="col">delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for user in users %}
+        <tr>
+            <th scope="row">{{user.id}}</th>
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+            <td><a href="index.php?action=edit&id={{user.id}}">edit</a></td>
+            <td><a href="">delete</a></td>
+        </tr>
+        {%endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}
