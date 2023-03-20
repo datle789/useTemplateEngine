@@ -24,7 +24,6 @@ switch ($action) {
             exit;
         }
         echo $twig->render('add.html');
-        echo 'add';
         break;
     case 'edit':
         $id = $_GET['id'];
@@ -40,18 +39,14 @@ switch ($action) {
             exit;
         }
         echo $twig->render('edit.html', ['user' => $user]);
-        echo 'edit';
         break;
     case 'delete':
-        // $id = $_GET['id'];
-        // $stmt = $db->prepare("DELETE FROM users WHERE id = ?");
-        // $stmt->execute([$id]);
-        // header('Location: index.php');
-        // exit;
-        echo 'delete';
+        $id = $_GET['id'];
+        $stmt = $db->prepare("DELETE FROM users WHERE id = ?");
+        $stmt->execute([$id]);
+        header('Location: index.php');
+        exit;
         break;
-
-
 
     default:
         $stmt = $db->query("SELECT * FROM users");
